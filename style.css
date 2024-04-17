@@ -1,0 +1,269 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+/* ******************* */
+/* HEADER */
+/* ******************* */
+
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 8rem;
+  background-color: #fbca92;
+  z-index: 999;
+
+  pointer-events: visible;
+  visibility: visible;
+  opacity: 1;
+  transition: all 0.4s;
+}
+
+.header--hidden {
+  transform: translateY(-100%);
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  padding: 2.4rem;
+  gap: 1.6rem;
+}
+
+.form-input,
+.form-select {
+  display: inline-block;
+  width: 100%;
+  font-family: inherit;
+  color: inherit;
+  padding: 0.8rem;
+  background-color: #b08d66;
+  color: #fff;
+  border: none;
+  outline: none;
+  border-radius: 7px;
+}
+
+.form-input::-webkit-input-placeholder {
+  color: #f1f1f1;
+}
+
+.form-input--hidden {
+  display: none;
+}
+
+/* ******************* */
+/* MAIN */
+/* ******************* */
+
+.main {
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 7fr 3fr;
+  overflow: hidden;
+}
+
+.sidebar {
+  background-color: #4b3d2c;
+  padding: 9rem 3.2rem 3.2rem;
+  overflow: scroll;
+}
+
+/* ******************* */
+/* WORKOUT */
+/* ******************* */
+
+.workout {
+  padding: 2.4rem;
+  background-color: #fbca92;
+  box-shadow: 0 0 48px rgba(0, 0, 0, 0.1);
+  border-radius: 7px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.workout:not(:last-child) {
+  margin-bottom: 3.2rem;
+}
+
+.workout--running::before,
+.workout--hiking::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 1.8rem;
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px;
+}
+
+.workout--running::before {
+  background-color: #e74d3c;
+}
+
+.workout--hiking::before {
+  background-color: #2ecc70;
+}
+
+.workout-title {
+  font-size: 2.2rem;
+  margin-bottom: 1.6rem;
+  text-transform: capitalize;
+}
+
+.workout-info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+}
+
+.workout-data {
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+}
+
+.delete-workout {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 4rem;
+  background-color: #e74d3ce2;
+  top: 0;
+  left: 0;
+  border: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+  border-top-right-radius: 7px;
+  border-top-left-radius: 7px;
+  color: #fbca92;
+  font-size: 2rem;
+  text-transform: uppercase;
+
+  transform: translateY(-100%);
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.5s;
+}
+
+.workout:hover .delete-workout {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: visible;
+}
+
+/* ******************* */
+/* ERROR */
+/* ******************* */
+
+.error-popup {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  visibility: hidden;
+  transition: all 0.1s;
+  z-index: 1000;
+}
+
+.error-popup--show {
+  visibility: visible;
+}
+
+.error-box {
+  min-width: 45rem;
+  background-color: #fbca92;
+  padding: 2.4rem;
+  box-shadow: 0 0 48px rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+
+  position: relative;
+}
+
+.error-icon {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background-color: #e74d3c96;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.error-title {
+  font-size: 2.4rem;
+  margin: 2.4rem 0 1.2rem;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.error-description {
+  font-size: 1.8rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.error-close {
+  position: absolute;
+  top: 4px;
+  right: 8px;
+  font-size: 2.4rem;
+  cursor: pointer;
+}
+
+/* ******************* */
+/* MAP */
+/* ******************* */
+
+.leaflet-popup .leaflet-popup-content-wrapper {
+  background-color: #b08d66;
+  color: #fff;
+  border-radius: 5px;
+  padding-right: 0.6rem;
+}
+
+.leaflet-popup .leaflet-popup-content {
+  font-size: 1.5rem;
+}
+
+.leaflet-popup .leaflet-popup-tip {
+  background-color: #4b3d2c;
+}
+
+.hiking--popup .leaflet-popup-content-wrapper {
+  border-left: 5px solid #2ecc70;
+}
+.running--popup .leaflet-popup-content-wrapper {
+  border-left: 5px solid #e74d3c;
+}
